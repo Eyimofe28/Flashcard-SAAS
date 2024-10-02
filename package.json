@@ -1,0 +1,30 @@
+{
+  "name": "flashcard-saas",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@clerk/nextjs": "^5.5.2",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^6.1.1",
+    "@mui/material": "^6.1.0",
+    "@stripe/stripe-js": "^4.4.0",
+    "firebase": "^10.13.1",
+    "next": "14.2.11",
+    "next-stripe": "^1.0.0-beta.1",
+    "openai": "^4.61.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "stripe": "^16.11.0"
+  },
+  "devDependencies": {
+    "eslint": "^8",
+    "eslint-config-next": "14.2.11"
+  }
+}
