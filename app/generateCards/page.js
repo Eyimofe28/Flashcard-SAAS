@@ -312,7 +312,7 @@ export default function Generate(){
                     <Button 
                       variant="contained" 
                       color="primary" 
-                      sx={{ mb: 2, mx:3.5 }}  // 50px margin-left from the Typography
+                      sx={{ mb: 2, mx:3.5 }}  // 35px margin-left from the Typography
                       onClick={handleOpen}  // Add your save flashcards function here
                     >
                       Save Flashcards
@@ -322,7 +322,7 @@ export default function Generate(){
                   <Grid2 container spacing={3} justifyContent="Center">
                     {flashcards.map((flashcard, index) => (
                     <Grid2 item xs={12} sm={6} md={4} lg={3} key={index}> {/* Changed from 6 to 4 for three per row */}
-                      <Card sx={{ width: 350, height: 350 }}> {/* Set card dimensions */}
+                      <Card sx={{ width: 330, height: 330 }}> {/* Set card dimensions */}
                       <CardActionArea onClick={() => {
                         handleCardClick(index)}}>
                           <CardContent>
