@@ -143,7 +143,7 @@ export default function SignUpPage() {
                   color: isDarkMode ? 'white' : 'black', // Text color based on theme
                 }}
               >
-                Let's get this party started! 🤩
+                Let&apos;s get this party started! 🤩
               </Typography>
               <SignUp appearance={{ baseTheme: clerkTheme }} />
             </Paper>

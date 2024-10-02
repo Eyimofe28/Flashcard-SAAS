@@ -1,11 +1,12 @@
 'use client';
+import React from 'react';
 import { useRouter } from "next/navigation"
 import { useUser } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 import { db } from '@/firebase';
 import { doc, collection, getDocs } from 'firebase/firestore';
 import { useSearchParams } from 'next/navigation';
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import {
   Box,
   ThemeProvider,

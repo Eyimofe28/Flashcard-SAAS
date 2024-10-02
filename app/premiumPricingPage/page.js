@@ -43,6 +43,7 @@ const ResultPage = () => {
       router.push("/cancel");
     };
 
+    if (typeof window !== "undefined") {
     // Attach the event listener for 'beforeunload'
     window.addEventListener("beforeunload", handleBeforeUnload);
 
@@ -50,7 +51,7 @@ const ResultPage = () => {
     return () => {
       window.removeEventListener("beforeunload", handleBeforeUnload);
     };
-  }, [router]);
+  }}, [router]);
 
   if (loading) {
     return (

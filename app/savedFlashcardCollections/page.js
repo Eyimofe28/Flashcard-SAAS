@@ -1,8 +1,9 @@
 'use client';
+import React from 'react';
 import { useUser } from '@clerk/nextjs';
 import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import { db } from '@/firebase';
 import {
   doc,
@@ -29,6 +30,7 @@ import {
   createTheme,
   CssBaseline
 } from '@mui/material';
+import CircularProgress from '@mui/material/CircularProgress'; // or the appropriate import path
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 
 // ------------- page to view all flashcards saved----------------------

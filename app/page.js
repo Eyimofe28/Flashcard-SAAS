@@ -6,6 +6,7 @@ import {createTheme, ThemeProvider} from '@mui/material/styles';
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { AppBar, Box, Button, Container, CssBaseline, Toolbar, Typography } from "@mui/material";
 import PricingSection from './components/pricing';
+import CircularProgress from '@mui/material/CircularProgress'; // Adjust the import path as necessary
 import Head from "next/head";
 
 const lightTheme = createTheme({ 
@@ -151,7 +152,7 @@ export default function Home() {
           >
             <Typography sx={{ fontSize:'25px', fontFamily: 'Mina'}}>
               Most Accessible Study Tool!<br /><br />
-              Study literally on-the-go from any device. Whether you're in the library
+              Study literally on-the-go from any device. Whether you&apos;re in the library
               or on the bus, your flashcards are always with you.
             </Typography>
           </Box>

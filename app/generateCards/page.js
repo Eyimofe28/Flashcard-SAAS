@@ -1,4 +1,5 @@
 'use client'
+import React from 'react';
 import { useUser } from "@clerk/nextjs"
 import { Box, Button, Card, CardActionArea, CardContent, Container, Dialog, DialogActions, 
          DialogContent, DialogContentText, DialogTitle, Grid2, Paper, TextField, Typography, 
@@ -8,7 +9,7 @@ import { useState, useEffect } from "react"
 import { db } from "@/firebase"
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { doc, collection, setDoc, getDoc, writeBatch } from "firebase/firestore"
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import QuizIcon from '@mui/icons-material/Quiz';
 
 export default function Generate(){
@@ -39,7 +40,7 @@ export default function Generate(){
     // --------------------- event handler functions -----------------------------
     const handleSubmit = async () => {
       if (!text.trim()) {
-        alert('Please enter some text to generate flashcards.');
+        alert("Please enter some text to generate flashcards.");
         return;
       }
     
@@ -55,7 +56,7 @@ export default function Generate(){
     
         // If the user has not used their free trial, allow them to generate flashcards
         alert("This is your one free trial to generate flashcards. Sign in for unlimited access!");
-    
+
         // Mark that the user has used their free trial
         localStorage.setItem('hasUsedTrial', 'true');
       }
@@ -103,8 +104,8 @@ export default function Generate(){
 
     const saveFlashcards = async () => {
       if (!name){
-          alert('Please enter a name')
-          return
+        alert("Please enter a name");
+        return
       }
   
       const batch = writeBatch(db)
@@ -232,7 +233,7 @@ export default function Generate(){
             <Box align="Center" sx={{ mt: 4, mb: 3, display: "flex", flexDirection: 'column'}}>  
                 <Typography sx={{ fontSize:'28px', fontFamily: 'Mina'}}>
                     What do you wanna learn today?<br /> 
-                    Enter a brief text about any topic and I'll generate flashcards in an instant!
+                    Enter a brief text about any topic and I&apos;ll generate flashcards in an instant!
                 </Typography>
             </Box>
 
@@ -258,9 +259,9 @@ export default function Generate(){
 
             {/*Comment*/}
             <Box align="Center" sx={{display: "flex", flexDirection: 'column'}}>  
-              <Typography sx={{ fontSize:'20px', fontFamily: 'Mina'}}>
-                  Scroll down to see flashcards :)
-              </Typography>
+              <Typography sx={{ fontSize:"20px", fontFamily: "Mina"}} >
+                Scroll down to see flashcards :)
+            </Typography>
             </Box>
 
         </Container>
