@@ -3,7 +3,7 @@ import React from 'react';
 import { useUser } from "@clerk/nextjs"
 import { Box, Button, Card, CardActionArea, CardContent, Container, Dialog, DialogActions, 
          DialogContent, DialogContentText, DialogTitle, Grid2, Paper, TextField, Typography, 
-         CircularProgress, AppBar, Toolbar, Divider } from "@mui/material"
+         CircularProgress, AppBar, Toolbar, Divider, useMediaQuery, useTheme } from "@mui/material"
 import { useRouter } from "next/navigation"
 import { useState, useEffect } from "react"
 import { db } from "@/firebase"
@@ -21,6 +21,10 @@ export default function Generate(){
     const [open, setOpen] = useState(false)
     const [loading, setLoading] = useState(false)
     const router = useRouter()
+    // Adjust based on screen size
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
 
     // Load saved flashcards from localStorage on component mount
     useEffect(() => {
@@ -199,7 +203,7 @@ export default function Generate(){
 
         <AppBar position="fixed">
           <Toolbar>
-            <Typography variant="h4" style={{ flexGrow: 1, fontFamily: 'Mina' }}>
+            <Typography variant={isMobile ? "h5" : "h4"} style={{ flexGrow: 1, fontFamily: 'Mina' }}>
               QuickFlip Flashcard Application
             </Typography>
 
@@ -304,7 +308,7 @@ export default function Generate(){
 
                   {/* Divider */}
                   <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <Divider sx={{ bgcolor: 'primary.main', width: 800, mb: '20px' }} />
+                    <Divider sx={{ bgcolor: 'primary.main', width: '100%', mb: '20px' }} />
                   </Box>
                                 
                   {/* Save Flashcards Button */}
@@ -312,7 +316,7 @@ export default function Generate(){
                     <Button 
                       variant="contained" 
                       color="primary" 
-                      sx={{ mb: 2, mx:3.5 }}  // 35px margin-left from the Typography
+                      sx={{ mb: 2, mx:4 }}  // 40px margin-left from the Typography
                       onClick={handleOpen}  // Add your save flashcards function here
                     >
                       Save Flashcards

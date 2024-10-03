@@ -1,5 +1,5 @@
 'use client';
-import { Box, Paper, Typography, Button, Container, AppBar, Toolbar } from '@mui/material';
+import { Box, Paper, Typography, Button, Container, AppBar, Toolbar, useTheme, useMediaQuery } from '@mui/material';
 import React, { useState, useEffect } from "react";
 import { SignUp } from '@clerk/nextjs';
 import { useRouter } from 'next/navigation';
@@ -45,6 +45,10 @@ const darkTheme = createTheme({
 export default function SignUpPage() {
   const router = useRouter();
 
+  // Adjust based on screen size
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
+
   // State to manage theme
   const [isDarkMode, setIsDarkMode] = useState(false);
 
@@ -74,7 +78,7 @@ export default function SignUpPage() {
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h4" style={{ flexGrow: 1, fontFamily: 'Mina' }}>
+          <Typography variant={isMobile ? "h5" : "h4"} style={{ flexGrow: 1, fontFamily: 'Mina' }}>
             QuickFlip Flashcard Application
           </Typography>
 
@@ -137,9 +141,12 @@ export default function SignUpPage() {
                 sx={{
                   textAlign: 'center',
                   fontFamily: 'Mina',
-                  fontSize: '30px',
                   fontStyle: 'normal',
                   fontWeight: 700,
+                  fontSize: {
+                    xs: '23px', // font size for small screens (mobile)
+                    sm: '30px', // font size for larger screens (tablet and up)
+                  },
                   color: isDarkMode ? 'white' : 'black', // Text color based on theme
                 }}
               >

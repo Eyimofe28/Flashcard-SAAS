@@ -4,9 +4,8 @@ import getStripe from "@/utils/get-stripe";
 import React, {useState} from "react";
 import {createTheme, ThemeProvider} from '@mui/material/styles';
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { AppBar, Box, Button, Container, CssBaseline, Toolbar, Typography } from "@mui/material";
+import { AppBar, Box, Button, Container, CssBaseline, Toolbar, Typography, useMediaQuery, useTheme } from "@mui/material";
 import PricingSection from './components/pricing';
-import CircularProgress from '@mui/material/CircularProgress'; // Adjust the import path as necessary
 import Head from "next/head";
 
 const lightTheme = createTheme({ 
@@ -39,6 +38,10 @@ const darkTheme = createTheme({
 export default function Home() {
    //State to manage theme
    const [isDarkMode, setIsDarkMode] = useState(false);
+   
+   // Adjust based on screen size
+   const theme = useTheme();
+   const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
    //Touggle theme handler
    const handleThemeTouggle = () => {
@@ -52,7 +55,7 @@ export default function Home() {
 
       <AppBar position="fixed">
           <Toolbar>
-            <Typography variant="h4" style={{flexGrow: 1, fontFamily: 'Mina'}}>
+            <Typography variant={isMobile ? "h5" : "h4"} style={{flexGrow: 1, fontFamily: 'Mina'}} >
               QuickFlip Flashcard Application
             </Typography>
 
@@ -85,9 +88,12 @@ export default function Home() {
           <meta name="description" content="Create flashcard from your text" />
         </Head>
 
-        <Box align="center" sx={{mt: { xs: 20, sm: 12 }, // 20px margin-top on small screens, 12 on larger
+        <Box align="center" sx={{mt: { xs: 17, sm: 12 }, // 20px margin-top on small screens, 12 on larger
 }}>
-          <Typography sx={{ fontSize:'35px', fontFamily: 'Mina'}}>
+          <Typography sx={{ fontFamily: 'Mina', fontSize: {
+              xs: '25px', // font size for small screens (mobile)
+              sm: '35px', // font size for larger screens (tablet and up)
+            }}}>
             Boring and seemingly endless notes/topics tiring you out?<br />
             Convert them to Flashcards using QuickFlip to narrow down the pressure!
           </Typography>

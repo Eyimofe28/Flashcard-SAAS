@@ -28,7 +28,9 @@ import {
   Toolbar,
   Button,
   createTheme,
-  CssBaseline
+  CssBaseline,
+  useTheme,
+  useMediaQuery
 } from '@mui/material';
 import CircularProgress from '@mui/material/CircularProgress'; // or the appropriate import path
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
@@ -39,6 +41,10 @@ export default function Flashcard() {
   const [flashcards, setFlashcards] = useState([]);
   const [loading, setLoading] = useState(false)
   const router = useRouter();
+
+  // Adjust based on screen size
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("sm"));
 
   const lightTheme = createTheme({
     palette: {
@@ -180,10 +186,11 @@ export default function Flashcard() {
   // -------------------- ui------------------
   return (
     <ThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+
       <CssBaseline />
       <AppBar position="fixed">
           <Toolbar>
-            <Typography variant="h4" style={{ flexGrow: 1, fontFamily: 'Mina' }}>
+            <Typography variant={isMobile ? "h6" : "h4"} style={{ flexGrow: 1, fontFamily: 'Mina' }} >
               QuickFlip Flashcard Application
             </Typography>
 
@@ -208,7 +215,7 @@ export default function Flashcard() {
           minHeight: '100vh',
         }}
       >
-        <Container>
+        <Container maxWidth='100vw'>
           <Typography
             variant="h4"
             sx={{
@@ -224,7 +231,7 @@ export default function Flashcard() {
             Your Flashcard Collections
           </Typography>
           <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
-            <Divider sx={{ bgcolor: 'primary.main', width: 800 }} />
+            <Divider sx={{ bgcolor: 'primary.main', width:'100%' }} />
           </Box>
 
           {/* display collections */}
@@ -232,7 +239,7 @@ export default function Flashcard() {
             {flashcards.map((flashcard, index) => (
               <Grid2 item xs={12} sm={6} md={4} key={index}>
                 <Box sx={{ padding: '20px' }}>
-                    <Card sx={{background: 'white', width: '120%'}}>
+                    <Card sx={{background: 'white', width: '100%'}}>
                     <CardActionArea
                         onClick={() => {
                         handleCardClick(flashcard.name);

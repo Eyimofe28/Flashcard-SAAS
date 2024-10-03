@@ -179,7 +179,7 @@ export default function Flashcard() {
               Flashcards saved in - <b><em>{search}</em></b> - Collection
             </Typography>
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-              <Divider sx={{ bgcolor: 'primary.main', width: 800, mb:5}} />
+              <Divider sx={{ bgcolor: 'primary.main', width:'100%', mb:5}} />
             </Box>
             {/* dispaly cards */}
             <Grid2 container spacing={3} justifyContent="Center">
